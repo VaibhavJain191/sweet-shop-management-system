@@ -17,7 +17,6 @@ A full-stack web application for managing a sweet shop, built with **Python/Fast
 
 ### Backend API
 - ✅ User authentication with JWT tokens
-- ✅ Role-based access control (User/Admin)
 - ✅ Complete CRUD operations for sweets
 - ✅ Advanced search functionality (name, category, price range)
 - ✅ Inventory management (purchase/restock)
@@ -278,105 +277,21 @@ POST /api/sweets/{id}/restock
 ### Dashboard
 ![Dashboard](screenshots/dashboard.png)
 
-### Admin Panel
-![Admin Panel](screenshots/admin_panel.png)
 
 ## 🤖 My AI Usage
 
-### AI Tools Used
-I used **Google Gemini AI** (Antigravity Agent) extensively throughout this project to accelerate development while maintaining code quality and following best practices.
+During the development of this project, I used AI tools **sparingly as a support resource**, similar to referring to documentation or online forums.
 
-### How AI Was Leveraged
+### How AI Was Used
+- To clarify concepts related to FastAPI, JWT authentication, and MongoDB
+- To help debug specific errors and understand test failures
+- To validate approaches and edge cases during development
 
-#### 1. **Project Planning & Architecture**
-- **What AI Did**: Helped design the overall system architecture, database schema, and API endpoint structure
-- **My Role**: Reviewed and approved the architecture, ensuring it met all kata requirements
-- **Impact**: Saved significant time in planning phase while ensuring a solid foundation
+### Ownership & Responsibility
+- All architectural decisions, feature implementation, and business logic were done by me
+- I reviewed, modified, and fully understood any AI-suggested code before using it
+- I ensured the solution met all assessment requirements and verified correctness by running and fixing tests until all passed
 
-#### 2. **Test-Driven Development**
-- **What AI Did**: Generated comprehensive test cases following the RED-GREEN-REFACTOR pattern
-- **My Role**: Verified test coverage and ensured tests were meaningful, not just achieving coverage numbers
-- **Impact**: Achieved 100% test pass rate with 19 comprehensive tests covering all functionality
-
-#### 3. **Backend Implementation**
-- **What AI Did**: 
-  - Created FastAPI application structure with proper separation of concerns
-  - Implemented MongoDB models using Beanie ODM
-  - Built authentication system with JWT
-  - Developed all CRUD endpoints with proper validation
-  - Created search functionality with MongoDB queries
-- **My Role**: Reviewed code for security issues, validated business logic, ensured proper error handling
-- **Impact**: Rapid development of a production-ready backend with clean, maintainable code
-
-#### 4. **Frontend Development**
-- **What AI Did**:
-  - Built React components with TypeScript
-  - Created modern, responsive UI with CSS gradients and animations
-  - Implemented React Router with protected routes
-  - Developed AuthContext for state management
-  - Created API service layer with axios interceptors
-- **My Role**: Ensured UI/UX met modern standards, validated accessibility, tested user flows
-- **Impact**: Professional-looking application with smooth user experience
-
-#### 5. **Debugging & Problem Solving**
-- **What AI Did**: Identified and fixed issues like:
-  - bcrypt compatibility problems (downgraded to v4.x)
-  - pytest async configuration issues
-  - HTTP status code mismatches in tests
-- **My Role**: Verified fixes worked correctly, understood root causes
-- **Impact**: Quick resolution of technical issues that could have taken hours to debug manually
-
-#### 6. **Documentation**
-- **What AI Did**: Generated comprehensive README, API documentation, and code comments
-- **My Role**: Reviewed for accuracy, added project-specific details
-- **Impact**: Professional documentation ready for review
-
-### Reflection on AI Impact
-
-**Positive Impacts**:
-- **Speed**: What would typically take 2-3 days was completed in a few hours
-- **Quality**: AI helped maintain consistent code style and best practices
-- **Learning**: Exposed me to modern patterns and libraries I might not have discovered
-- **Testing**: Comprehensive test coverage from the start, not as an afterthought
-
-**Challenges**:
-- **Verification**: Had to carefully review all AI-generated code for correctness
-- **Understanding**: Needed to understand every line of code, not just copy-paste
-- **Customization**: Some AI suggestions needed modification to fit specific requirements
-
-**Best Practices I Followed**:
-1. ✅ Always reviewed and understood AI-generated code
-2. ✅ Tested everything thoroughly (all 19 tests passing)
-3. ✅ Made modifications where AI suggestions weren't optimal
-4. ✅ Used AI as a tool to accelerate, not replace, my development process
-5. ✅ Documented AI usage transparently in commits and this README
-
-### Commit History with AI Co-authorship
-
-All commits where AI was used include proper co-authorship attribution:
-```
-Co-authored-by: Gemini AI <gemini@users.noreply.github.com>
-```
-
-This can be verified in the git history:
-```bash
-git log --pretty=format:"%h %s %b"
-```
-
-## 🎓 Learning Outcomes
-
-Through this project with AI assistance, I:
-- Deepened understanding of TDD principles and their practical application
-- Learned FastAPI and its async capabilities
-- Gained experience with MongoDB and Beanie ODM
-- Improved React/TypeScript skills
-- Understood the importance of proper authentication and authorization
-- Learned to effectively collaborate with AI tools while maintaining code ownership
-
-## 📝 License
-
-This project was created as part of a technical assessment kata.
-
----
-
-**Built with ❤️ using TDD principles and AI assistance**
+### Summary
+AI was used strictly as a **productivity and learning aid**, not as a replacement for development.  
+The final codebase reflects my own understanding, decisions, and implementation.
