@@ -77,7 +77,7 @@ async def test_create_sweet_unauthorized(client: AsyncClient):
         }
     )
     
-    assert response.status_code == 403  # Forbidden
+    assert response.status_code == 401  # Unauthorized
 
 
 @pytest.mark.asyncio

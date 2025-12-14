@@ -17,6 +17,9 @@ def hash_password(password: str) -> str:
     Returns:
         Hashed password
     """
+    # Ensure password is a string (bcrypt 5.x requirement)
+    if not isinstance(password, str):
+        password = str(password)
     return pwd_context.hash(password)
 
 
@@ -31,4 +34,10 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     Returns:
         True if password matches, False otherwise
     """
+    # Ensure inputs are strings
+    if not isinstance(plain_password, str):
+        plain_password = str(plain_password)
+    if not isinstance(hashed_password, str):
+        hashed_password = str(hashed_password)
     return pwd_context.verify(plain_password, hashed_password)
+
