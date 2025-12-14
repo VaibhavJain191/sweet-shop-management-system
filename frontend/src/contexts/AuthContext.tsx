@@ -14,6 +14,7 @@ interface User {
 interface AuthContextType {
     user: User | null;
     token: string | null;
+    loading: boolean;
     login: (email: string, password: string) => Promise<void>;
     register: (email: string, password: string, name: string) => Promise<void>;
     logout: () => void;
@@ -26,6 +27,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [token, setToken] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);
 
     // Load user and token from localStorage on mount
     useEffect(() => {
@@ -36,6 +38,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             setToken(storedToken);
             setUser(JSON.parse(storedUser));
         }
+        setLoading(false);
     }, []);
 
     const login = async (email: string, password: string) => {
@@ -47,15 +50,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             localStorage.setItem('token', accessToken);
             setToken(accessToken);
 
-            // Decode token to get user info (simplified - in production use jwt-decode)
-            // For now, we'll fetch user info by registering/logging in
-            // Since we don't have a /me endpoint, we'll store user data from registration
             // For login, we'll create a minimal user object
             const userObj: User = {
-                id: '', // We don't have this from login response
+                id: '',
                 email: email,
-                name: email.split('@')[0], // Temporary
-                role: 'user' // Default, will be updated if admin
+                name: email.split('@')[0],
+                role: 'user'
             };
 
             localStorage.setItem('user', JSON.stringify(userObj));
@@ -67,12 +67,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     const register = async (email: string, password: string, name: string) => {
         try {
+            // First, register the user
             const userData = await authAPI.register(email, password, name);
 
-            // After registration, automatically log in
-            await login(email, password);
-
-            // Update user with registration data
+            // Create user object with registration data
             const userObj: User = {
                 id: userData.id,
                 email: userData.email,
@@ -80,8 +78,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                 role: userData.role
             };
 
+            // Store user data FIRST
             localStorage.setItem('user', JSON.stringify(userObj));
             setUser(userObj);
+
+            // Then get the token by logging in
+            const loginData = await authAPI.login(email, password);
+            localStorage.setItem('token', loginData.access_token);
+            setToken(loginData.access_token);
+
         } catch (error: any) {
             throw new Error(error.response?.data?.detail || 'Registration failed');
         }
@@ -97,6 +102,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const value: AuthContextType = {
         user,
         token,
+        loading,
         login,
         register,
         logout,
