@@ -1,0 +1,156 @@
+/* SweetCard styling */
+
+.sweet-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sweet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.sweet-card.out-of-stock {
+    opacity: 0.6;
+}
+
+.sweet-image {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sweet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sweet-placeholder {
+    font-size: 4rem;
+}
+
+.out-of-stock-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f44336;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sweet-content {
+    padding: 20px;
+}
+
+.sweet-header {
+    margin-bottom: 12px;
+}
+
+.sweet-header h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.sweet-category {
+    display: inline-block;
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.sweet-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 12px 0;
+    line-height: 1.5;
+}
+
+.sweet-footer {
+    margin-top: 15px;
+}
+
+.sweet-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.sweet-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.sweet-stock {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.purchase-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.quantity-input {
+    width: 70px;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.quantity-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn-purchase {
+    flex: 1;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-purchase:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-purchase:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
